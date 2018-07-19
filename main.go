@@ -13,8 +13,9 @@ import (
 
 func main() {
 
-	dbinfo := fmt.Sprintf("user=%s password=%s dbname=%s port=%s sslmode=disable",
-		config.DB_USER, config.DB_PASSWORD, config.DB_NAME, config.PORT)
+	dbinfo := fmt.Sprintf("user=%s password=%s dbname=%s host=%s port=%s sslmode=disable",
+		config.DB_USER, config.DB_PASSWORD, config.DB_NAME,"172.18.0.2","5432")
+	fmt.Println(dbinfo)
 	db, err := sql.Open("postgres", dbinfo)
 	log.Printf("Eror check",err )
 	checkErr(err)

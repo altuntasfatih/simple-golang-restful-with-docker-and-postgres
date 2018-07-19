@@ -100,3 +100,6 @@ Delete one user with the given Id (Need To Use DELETE method)
 ```
       http://127.0.0.1:3000/users/1
 ```
+
+
+docker system prune --all --force --volumes

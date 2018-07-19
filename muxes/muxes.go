@@ -43,6 +43,16 @@ func SERVE(db *sql.DB) *http.ServeMux {
 
 		return
 	})
+	mux.HandleFunc("/get", func(w http.ResponseWriter, req *http.Request) {
+		if req.Method != "GET" {
+			http.NotFound(w, req)
+			return
+		}
+		fmt.Fprintf(w, "hello, you've hit %s\n", req.URL.Path)
+		log.Printf("get method is invoked")
+
+		return
+	})
 
 	mux.HandleFunc("/getAll", func(w http.ResponseWriter, req *http.Request) {
 		if req.Method != "GET" {
@@ -144,6 +154,7 @@ func convertRequestToUser(req *http.Request) User {
 
 func checkErr(err error) {
 	if err != nil {
+		log.Printf("Eror check in mux",err )
 		panic(err)
 	}
 }
